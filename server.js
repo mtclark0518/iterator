@@ -32,7 +32,7 @@ app.get('*', (req, res) => {
 });
 
 
-server.listen(PORT, () => log('Shakedown ' + PORT));
+server.listen(PORT, () => log('Giggity goo on port: ' + PORT));
 
 
 
