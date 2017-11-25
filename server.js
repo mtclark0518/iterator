@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 1979
 
 
 const {Client} = require('pg')
-const client = new Client({ connectionString: process.env.DATABASE_URL || 'postgres://TheTDrive@localhost:5432/mischiefmanaged' });
+const client = new Client({ connectionString: process.env.DATABASE_URL || 'postgres://TheTDrive@localhost:5432/mischiefmanaged', ssl: true });
 client.connect( (err) => {
 	if (err) { log('error yo: ', err) } else { log('connected to db') }
 });
