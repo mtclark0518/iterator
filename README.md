@@ -5,16 +5,16 @@
 ### Build Stack  
 
 #### Client Side  
-  node.js  
-  socket.io  
-  express.js  
-  sequelize.js  
-  bcrypt-node.js  
-  postgres  
+  * node.js  
+  * socket.io  
+  * express.js  
+  * sequelize.js  
+  * bcrypt-node.js  
+  * postgresql  
 #### Server Side  
-  react.js  
-  axios  
-  socket.io-client  
+  * react.js  
+  * axios  
+  * socket.io-client  
 
 ### Features  
 * User login with salt/hash validation  
