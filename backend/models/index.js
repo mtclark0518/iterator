@@ -1,7 +1,6 @@
 const localDB = require('../../local.env.js')
 const Sequelize = require('sequelize')
-const sequelize = console.log(localDB)
-new Sequelize(process.env.DATABASE_URL || localDB )
+const sequelize = new Sequelize(process.env.DATABASE_URL || localDB )
 const container = sequelize.import('./container')
 const user = sequelize.import('./user')
 
