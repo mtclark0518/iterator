@@ -4,14 +4,14 @@
 ---  
 #### Build Stack  
 
-Client Side  
+##### Client Side  
   node.js  
   socket.io  
   express.js  
   sequelize.js  
   bcrypt-node.js  
   postgres  
-Server Side  
+##### Server Side  
   react.js  
   axios  
   socket.io-client  
