@@ -1,8 +1,8 @@
 # The Iterator-ater  
 
-##### View live demo [here](https://iterator.herokuapp.com)  
+#### View live demo [here](https://iterator.herokuapp.com)  
 ---  
-### Build Stack  
+#### Build Stack  
 
 * Client Side
   * node.js
@@ -14,10 +14,12 @@
 * Server Side
   * react.js
   * axios
-  * socket.io-client
-Features  
-How to run locally
-Summaraized step through  
-References  
+  * socket.io-client  
+
+#### Features  
+#### How to run locally  
+
+#### Summaraized step through  
+#### References  
 
 
