@@ -4,10 +4,9 @@ const DB = db.models;
 let number = 
     {
         number: 0,
-        activeUsers: 0
     }
 
-DB.user.findAll({ 
+DB.User.findAll({ 
     where: {
         isActive: true
     }}).then(users=>{
@@ -15,7 +14,7 @@ DB.user.findAll({
     })
 
 const constructo = () => {
-    return DB.container.create(number)
+    return DB.Container.create(number)
 };
 
 constructo().then( () => { process.exit() } )

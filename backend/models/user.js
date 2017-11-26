@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt-nodejs')
 module.exports = (sequelize, Sequelize) => {
-    const model = sequelize.define('user', {
+    const model = sequelize.define('User', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -8,12 +8,12 @@ module.exports = (sequelize, Sequelize) => {
         },
         name: {
             type: Sequelize.STRING,
-            allowNull: false,
+            // allowNull: false,
             unique: true
         },
         password: {
             type: Sequelize.STRING,
-            allowNull: false
+            // allowNull: false
         },
         isActive: {
             type: Sequelize.BOOLEAN,
