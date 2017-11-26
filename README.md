@@ -1,8 +1,12 @@
-Elevator pitch  
-Link to example  
+# The Iterator-ater  
+___
+##### View live demo [here](https:iterator.herokuapp.com)
+---  
+
 Built using  
 Features  
-Run locally  
+How to run locally
+Summaraized step through  
 References  
 
 
