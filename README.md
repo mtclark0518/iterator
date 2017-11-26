@@ -5,6 +5,7 @@
 ### Build Stack  
 
 #### Client Side  
+___  
   node.js  
   socket.io  
   express.js  
@@ -12,6 +13,7 @@
   bcrypt-node.js  
   postgres  
 #### Server Side  
+_____  
   react.js  
   axios  
   socket.io-client  
