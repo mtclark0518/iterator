@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import Iterator from './iterator'
-
 import Login from './login'
-import '../App.css';
+import axios from 'axios'
 
 
 class Container extends Component {
@@ -18,6 +16,7 @@ class Container extends Component {
   }
 
   componentDidMount(){
+    console.log(this.state)
   }
 
   toggleUser = () => {
@@ -44,8 +43,8 @@ class Container extends Component {
         console.log('got an error')
         this.setState({error: 'there was an issue with your login, please check password or try a different username'})
       } else {
-      this.setState({username: response.data.name, error: ''})
-      this.toggleUser();
+        this.setState({username: response.data.name, error: ''})
+        this.toggleUser();
       }
     });
   };
@@ -53,7 +52,7 @@ class Container extends Component {
   render() {
     return (
       <div className="App">
-      <div>{this.state.error}</div>
+      <div className="errorMessage">{this.state.error}</div>
           { this.state.isUser !== true && (
             <Login 
               onSetUserName={this.SetUserName}

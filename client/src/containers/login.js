@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
 class Login extends Component {
+
   constructor(props){
+    
     super(props)
+    
     this.state = {
       username: null,
       password: null
     }
+
   }
 
 
@@ -16,19 +20,18 @@ class Login extends Component {
   }
 
 
-  updateName(nameEvent){
+  updateName = (nameEvent) => {
       this.setState({
           username: nameEvent.target.value
       });
   }
-  updatePass(passEvent){
+  updatePass = (passEvent) => {
       this.setState({
           password: passEvent.target.value
       });
   }
   render() {
     return (
-      <div>
         <form className="Login" onSubmit={e => this.login(e)}>
           <input 
               type="text"
@@ -38,9 +41,8 @@ class Login extends Component {
               type="password"
               placeholder="password"
               onChange={passEvent => this.updatePass(passEvent)}/>
-          <button type="submit">join</button>
+          <input type="submit" />
         </form>
-      </div>
     );
   }
 }
