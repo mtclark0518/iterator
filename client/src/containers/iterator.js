@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import io from 'socket.io-client'
 class Iterator extends Component {
-    constructor(props){
-      super(props)
-      this.socket = io()
-      this.state = { 
-        name: null,
-        number: null,        
-        users: null
-      }
+    
+  constructor(props){
+    super(props)
+    this.socket = io()
+    
+    this.state = { 
+      name: null,
+      number: null,        
+      users: null
     }
+  }
+
   componentDidMount(){
     this.socket.on('welcome', data => {
       this.setState( { name: data.name, number: data.number } )

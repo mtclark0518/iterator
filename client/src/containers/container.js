@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Iterator from './iterator'
 import Login from './login'
 import axios from 'axios'
-
+import Error from '../components/error'
 
 class Container extends Component {
   constructor(props){
@@ -20,17 +20,15 @@ class Container extends Component {
   }
 
   toggleUser = () => {
-      this.setState(prevState => ({
-        isUser : !prevState.isUser
-      }))
+    this.setState(prevState => ({
+      isUser : !prevState.isUser
+    }))
   }
   SetUserName = (name, password) => {
     let data = {
       name: name,
       password: password
-    }
-    
-    console.log(data)
+    };
     axios({
       method: 'POST',
       url: 'api/login',
@@ -51,17 +49,16 @@ class Container extends Component {
 
   render() {
     return (
-      <div className="App">
-      <div className="errorMessage">{this.state.error}</div>
-          { this.state.isUser !== true && (
-            <Login 
-              onSetUserName={this.SetUserName}
-              />
-          )}
-          { this.state.isUser === true && (
-            <Iterator 
-              username={this.state.username} />
-          )}
+      <div className="Container">
+        <Error className="errorMessage" message={this.state.error}/>
+        { this.state.isUser !== true && (
+          <Login 
+            onSetUserName={ this.SetUserName } />
+        )}
+        { this.state.isUser === true && (
+          <Iterator 
+            username={this.state.username} />
+        )}
       </div>
     );
   }
