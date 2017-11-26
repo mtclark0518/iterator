@@ -27,8 +27,6 @@
   * ui events saved to db && broadcast through socket  
   * socket.io-client built into a scaleable react component   
 
-
-
 ### Methods use following cli:  
 * npm  
 * create-react-app
