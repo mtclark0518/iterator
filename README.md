@@ -28,7 +28,19 @@
 
 
 
+### Methods use following cli:  
+* npm  
+* create-react-app
+* psql
+
 ### How to run locally  
+* in terminal run command $ psql  
+* connect locally to postgres  
+* run cmnd: # CREATE DATABASE { yourDatabaseName };
+* run cmnd: \quit;
+* cd into working directory
+* git clone repository into a directory  
+* cd into iterator && open in text-editor
 
 ### Summaraized step through  
 ### References  

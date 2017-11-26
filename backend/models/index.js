@@ -1,6 +1,6 @@
+const localDB = require('../../local.env')
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://TheTDrive@localhost:5432/mischiefmanaged')
-
+const sequelize = new Sequelize(process.env.DATABASE_URL || localDB )
 const container = sequelize.import('./container')
 const user = sequelize.import('./user')
 
