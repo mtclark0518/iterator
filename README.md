@@ -1,8 +1,9 @@
 # The Iterator-ater  
-===
-##### View live demo [here](https://iterator.herokuapp.com)
-===
-### Build Stack
+
+##### View live demo [here](https://iterator.herokuapp.com)  
+
+### Build Stack  
+
 * Client Side
   * node.js
   * socket.io
