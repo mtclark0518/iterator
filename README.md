@@ -5,12 +5,12 @@
 #### Build Stack  
 
 * Client Side
-  * node.js
-  * socket.io
-  * express.js
-  * sequelize.js
-  * bcrypt-node.js
-  * postgres
+  node.js  
+  socket.io  
+  express.js  
+  sequelize.js  
+  bcrypt-node.js  
+  postgres  
 * Server Side
   * react.js
   * axios
