@@ -1,7 +1,7 @@
 # The Iterator-ater  
 
 ##### View live demo [here](https://iterator.herokuapp.com)  
-___  
+---  
 ### Build Stack  
 
 * Client Side
