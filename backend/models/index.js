@@ -6,7 +6,7 @@ const user = sequelize.import('./user')
 
 
 container.hasMany(user);
-user.belongsTo(container);
+user.belongsTo(container, { as: 'activeUsers', foreignKey: 'containerId' } );
 
 const db = {}
 db.models = {

@@ -37,14 +37,17 @@ const login = (req, res) => {
         console.log(user, password)
         User.create({
             name: user,
-            password: password
+            password: password,
+            containerId: 1
         })
         .then( user => {
             let pass = user.dataValues.password
             console.log(pass)
             let hashed = user.hash(pass)
             user.updateAttributes({
-                password: hashed
+                password: hashed,
+                isActive: true
+
             })
             .then( user => { 
                 console.log(user.dataValues)

@@ -30,7 +30,13 @@ class Iterator extends Component {
     let by = e.target.value
     this.socket.emit('iterate', by);
   }
-
+  logout = () => {
+    console.log('inside logout request')
+    this.socket.emit('logging out', {
+      name: this.props.username
+    })
+    this.props.logout();
+  }
 
     render(){
         return(
@@ -51,6 +57,7 @@ class Iterator extends Component {
                         -
                 </button>
                 <h3>{this.state.number}</h3>
+                <button onClick={this.logout}>leave</button>
             </div>
         )
     }

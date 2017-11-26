@@ -18,6 +18,9 @@ class Container extends Component {
   componentDidMount(){
     console.log(this.state)
   }
+  logout = () => {
+    this.setState({username: null, isUser: false})
+  }
 
   toggleUser = () => {
     this.setState(prevState => ({
@@ -57,7 +60,8 @@ class Container extends Component {
         )}
         { this.state.isUser === true && (
           <Iterator 
-            username={this.state.username} />
+            username={this.state.username}
+            logout={ this.logout } />
         )}
       </div>
     );
