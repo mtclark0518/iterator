@@ -20,7 +20,7 @@ module.exports = (io) => {
             });   
         });
         
-        socket.on('user joined', data => {
+        socket.on('logging in', data => {
             socket.username = data.username;
             User.findAndCountAll({ 
                 where: { 
