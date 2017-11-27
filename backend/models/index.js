@@ -4,11 +4,8 @@ const Example = sequelize.import('./example')
 const User = sequelize.import('./user')
 const Op = Sequelize.Op;
 
-Example.belongsToMany(User, {
-    through: 'ActiveUsers'
-}
-);
-User.hasOne(Example);
+Example.hasMany(User, {as: 'ActiveUsers'});
+User.belongsTo(Example);
 
 const db = {};
 db.models = {
