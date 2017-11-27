@@ -19,7 +19,8 @@ class Container extends Component {
     console.log(this.state)
   }
   logout = () => {
-    this.setState({username: null, isUser: false})
+    this.setState({username: null})
+    this.toggleUser();
   }
 
   toggleUser = () => {
@@ -27,6 +28,7 @@ class Container extends Component {
       isUser : !prevState.isUser
     }))
   }
+  
   SetUserName = (name, password) => {
     let data = {
       name: name,

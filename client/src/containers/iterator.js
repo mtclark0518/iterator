@@ -16,6 +16,7 @@ class Iterator extends Component {
   componentDidMount(){
     this.socket.on('welcome', data => {
       this.setState( { name: data.name, number: data.number } )
+      this.join()
     })
     this.socket.on('update users', data => {
       this.setState({ users: data.users });
@@ -25,17 +26,23 @@ class Iterator extends Component {
     })
   }
 
-
-  iterate = (e) => {
-    let by = e.target.value
-    this.socket.emit('iterate', by);
+  join = () => {
+    this.socket.emit('user joined', {
+      username: this.props.username
+    })
   }
+
+
   logout = () => {
     console.log('inside logout request')
     this.socket.emit('logging out', {
-      name: this.props.username
+      username: this.props.username
     })
     this.props.logout();
+  }
+  iterate = (e) => {
+    let by = e.target.value
+    this.socket.emit('iterate', by);
   }
 
     render(){

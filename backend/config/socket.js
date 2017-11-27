@@ -1,41 +1,36 @@
 const log = (stuff) => console.log(stuff)
 const db = require('../models')
-
+const User = db.models.User
+const Example = db.models.Example
 //define our socket iteractions
 module.exports = (io) => {
     io.on('connection', (socket) => {
-        db.models.container.findOne({
+        //maybe a listener hear for the front end 
+        Example.findOne({
             where: {
                 id : 1
             }
         })
-        .then(response => {
-            let users = parseInt(response.dataValues.activeUsers)      
-            log('a user connected');
-            users++
-            response.updateAttributes({ 
-                activeUsers: users 
-            })
-            .then(response => {
-                let updatedUsers = response.dataValues.activeUsers
-
-
-                io.sockets.emit('update users', {
-                    users: updatedUsers
-                })
-                let number = response.dataValues.number
-
-
-                io.sockets.emit('welcome', {
-                    number: number,
-                    name: 'iterator',
-                })   
-            })
+        .then( example => {
+            let number = example.dataValues.number
+            let name = example.dataValues.name
+            io.sockets.emit('welcome', {
+                number: number,
+                name: name,
+            });   
         });
-
+        
+        socket.on('user joined', data => {
+            socket.username = data.username;
+            User.findAndCountAll({where:{active:true}}).
+            then( result => {
+                let activeUsers = result.count;
+                io.sockets.emit('update users', {users: activeUsers})
+            });
+        });
         socket.on('iterate', data => {
             let changeBy = parseInt(data)
-            db.models.container.findOne({
+            Example.findOne({
                 where: { 
                     id : 1
                 }
@@ -52,47 +47,31 @@ module.exports = (io) => {
                 });
             });
         });
+
         socket.on('logging out', data => {
-            db.models.container.findOne({
-                where: {
-                    id : 1 
-                }
-            })
-            .then(response => {
-                let users = response.dataValues.activeUsers
-                log('a user dipped')
-                users--
-                response.updateAttributes({
-                    activeUsers: users 
-                })
-                .then(response => {
-                    let updatedUsers = response.dataValues.activeUsers
-                    socket.broadcast.emit('update users', {
-                        users: updatedUsers 
-                    });
-                });
-            });
+            socket.disconnect();                
         });
         socket.on('disconnect', () => {
-            db.models.container.findOne({
+            log(socket.username)
+            User.findOne({
                 where: {
-                    id : 1 
+                    name: socket.username
                 }
             })
-            .then(response => {
-                let users = response.dataValues.activeUsers
-                log('a user dipped')
-                users--
-                response.updateAttributes({
-                    activeUsers: users 
+            .then( user => {
+                log(user)
+                user.updateAttributes({
+                    active:false
                 })
-                .then(response => {
-                    let updatedUsers = response.dataValues.activeUsers
-                    io.sockets.emit('update users', {
-                        users: updatedUsers 
-                    });
+                .then( user => { 
+                    log('a user dipped')
+                    User.findAndCountAll({where:{active:true}}).
+                    then( result => {
+                        let activeUsers = result.count;
+                        socket.broadcast.emit('update users', {users: activeUsers})
+                    });                
                 });
             });
         });
-    });
-};
+    })
+}

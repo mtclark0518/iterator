@@ -1,14 +1,18 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://TheTDrive@localhost:5432/mischiefmanaged' )
-const Container = sequelize.import('./container')
+const Example = sequelize.import('./example')
 const User = sequelize.import('./user')
+const Op = Sequelize.Op;
 
+Example.belongsToMany(User, {
+    through: 'ActiveUsers'
+}
+);
+User.hasOne(Example);
 
-Container.hasMany(User);
-
-const db = {}
+const db = {};
 db.models = {
-    Container,
+    Example,
     User
 }
 

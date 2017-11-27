@@ -2,7 +2,6 @@ const db = require('../models')
 const User = db.models.User;
 
 
-
 const login = (req, res) => {
 
     let username = req.body.name;
@@ -24,13 +23,11 @@ const login = (req, res) => {
             });
     };
     const validateUser = (user, password) => {
-        console.log(user, password)
         let encrypted = user.dataValues.password
-        console.log(encrypted)
         if (user.validPassword(password, encrypted)) {
             console.log('it worked');
             user.updateAttributes({
-                isActive: true
+                active: true
             })
             .then(user=>{
                 res.json(user)
@@ -41,19 +38,17 @@ const login = (req, res) => {
         }
     };
     const createUser = (user, password) => {
-        console.log(user, password)
         User.create({
             name: user,
             password: password,
-            containerId: 1
+            ExampleId: 1
         })
         .then( user => {
             let pass = user.dataValues.password
             let hashed = user.hash(pass)
             user.updateAttributes({
                 password: hashed,
-                isActive: true
-
+                active: true
             })
             .then( user => { 
                 console.log(user.dataValues)
@@ -62,25 +57,26 @@ const login = (req, res) => {
         })
     }
 
+
     findOrCreateUser(username)
 
 };
-const logout = (req, res) => {
-    let username = req.body.username
-    User.findOne({ where: {
-        name: username
-    }}).then(user=>{
-        if (!user) { res.json('ERROR') }
-        user.updateAttributes({
-            isActive: false
-        })})
-        .then(user => {
-        res.json(user)
-    });
-};
+// const logout = (req, res) => {
+//     let username = req.body.username
+//     User.findOne({ where: {
+//         name: username
+//     }}).then(user=>{
+//         if (!user) { res.json('ERROR') }
+//         user.updateAttributes({
+//             isActive: false
+//         })})
+//         .then(user => {
+//         res.json(user)
+//     });
+// };
 
 
 module.exports = { 
     login: login,
-    logout: logout
+    // logout: logout
 };

@@ -7,15 +7,15 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true
         },
         name: {
+            unique: true,
             type: Sequelize.STRING,
             // allowNull: false,
-            unique: true
         },
         password: {
             type: Sequelize.STRING,
             // allowNull: false
         },
-        isActive: {
+        active: {
             type: Sequelize.BOOLEAN,
         }
     });
