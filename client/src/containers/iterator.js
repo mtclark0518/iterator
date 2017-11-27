@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import io from 'socket.io-client'
+import '../styles/main.css'
 class Iterator extends Component {
     
   constructor(props){
@@ -48,24 +49,42 @@ class Iterator extends Component {
 
     render(){
         return(
-            <div>
-              <div>{this.state.name}</div>
-              <div>users connected: {this.state.users}</div>
-              <div>logged in as {this.props.username}</div>
-              
+            <div className="Iterator">
+
+              <div className="item">                
+                <h2>{this.state.name}</h2>
+                <div>users connected: {this.state.users}</div>
+                <div>logged in as {this.props.username}</div>
+              </div>
+
+              <div className="item">
                 <button
+                    className='button'
                     value={1}
                     onClick={e=>this.iterate(e)}>
                         +
                 </button>
 
                 <button
+                    className='button'
                     value={-1}
                     onClick={e=>this.iterate(e)}>
                         -
                 </button>
+              </div>            
+              
+              <div className="item">
                 <h3>{this.state.number}</h3>
-                <button onClick={this.logout}>leave</button>
+               </div>            
+
+              <div className="item">
+                <button 
+                  className='button'
+                  onClick={this.logout}>
+                    leave
+                </button>
+              </div>
+                          
             </div>
         )
     }
