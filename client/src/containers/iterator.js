@@ -32,14 +32,15 @@ class Iterator extends Component {
     })
   }
 
-
   logout = () => {
     console.log('inside logout request')
+
     this.socket.emit('logging out', {
       username: this.props.username
     })
     this.props.logout();
   }
+
   iterate = (e) => {
     let by = e.target.value
     this.socket.emit('iterate', by);
