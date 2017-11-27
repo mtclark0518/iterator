@@ -22,7 +22,11 @@ module.exports = (io) => {
         
         socket.on('user joined', data => {
             socket.username = data.username;
-            User.findAndCountAll({where:{active:true}}).
+            User.findAndCountAll({ 
+                where: { 
+                    active:true
+                }
+            }).
             then( result => {
                 let activeUsers = result.count;
                 io.sockets.emit('update users', {users: activeUsers})
